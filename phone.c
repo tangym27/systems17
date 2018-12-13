@@ -6,6 +6,9 @@
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
+#include <errno>
+#include <sys/sem.h>
+
 #define SHM_SIZE 500;
 
 int main(){
