@@ -10,6 +10,7 @@
 #include <sys/sem.h>
 
 #define SHM_SIZE 500;
+#define KEY 0xRINGING
 
 union semun{
 	int val;
@@ -19,12 +20,6 @@ union semun{
 }
 
 int main(){
-  key_t = key;
-  int shimid;
-  char * shared;
-  char command[100];
-  key = ftok("./phone.c",'R');
-  shmid = shmget(key,SHM_SIZE,0644 | IPC_CREAT);
-  shared = shmat(shmid,(void *) 0, 0);
+  int semid = semget(KEY,1,IPC_CREAT | IPC_EXCL | 0644);
   return 0;
 }
