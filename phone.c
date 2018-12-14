@@ -11,6 +11,13 @@
 
 #define SHM_SIZE 500;
 
+union semun{
+	int val;
+	struct semid_ds *buf;
+	unsigned short *array;
+	struct seminfo*_buf;
+}
+
 int main(){
   key_t = key;
   int shimid;
@@ -19,22 +26,5 @@ int main(){
   key = ftok("./phone.c",'R');
   shmid = shmget(key,SHM_SIZE,0644 | IPC_CREAT);
   shared = shmat(shmid,(void *) 0, 0);
-  while(1){
-    printf("This is your shared memory %s \n",shared);
-    printf("What do you want to do?(-c -r -v) \n");
-    fgets(command,200,stdin);
-    command[strlen(command) - 1] = "\0";
-    if(!strcmp(command,"-r")){
-      shmdt(shared);
-      shmctl(shmid,IPC_RMID,NULL);
-      printf("deleted mem");
-    }
-    if(!strcmp(command,"-c")){
-
-    }
-    if(!strcmp(command,"-v")){
-
-    }
-    
   return 0;
 }
