@@ -8,8 +8,7 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <sys/shm.h>
-#define KEY 199
-#define SHM_KEY 217
+#define KEY 1989
 
 void create(){
  union semun {
@@ -56,18 +55,20 @@ void view(){
      *text = 0;
    }
   printf("%s\n", file);
-
+  free(file);
   close(fd);
   return;
 }
 
 void delete(){
   printf("You have chosen to REMOVE the story\n");
+view();
   remove("story.txt");
   int shmid = shmget(KEY, 100, 0);
   shmctl(shmid, IPC_RMID, NULL);
   int semid = semget(KEY, 1, 0);
   semctl(semid, 0, IPC_RMID);
+
   printf("Removed!\n");
 }
 
