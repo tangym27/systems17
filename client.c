@@ -50,7 +50,7 @@ int main() {
 
 // WRITING TO THE FILE
   char message[256];
-  printf("What would you like the next line to be?\n");
+  printf("What would you like the next line to be? ");
   fgets(message,256,stdin);
   *count=strlen(message);
   shmdt(count);

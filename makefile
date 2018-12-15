@@ -3,4 +3,4 @@ all: client.c control.c
 	gcc -o control control.c
 
 clean:
-	rm -rf story.txt client control *.o
+	rm -rf client control *.o
