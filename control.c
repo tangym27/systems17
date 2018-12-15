@@ -9,7 +9,7 @@
 #include <fcntl.h>
 #include <sys/shm.h>
 #define KEY 1989
-
+#define KEY2 271
 void create(){
  union semun {
     int val;
@@ -64,9 +64,12 @@ void delete(){
   printf("You have chosen to REMOVE the story\n");
 view();
   remove("story.txt");
-  int shmid = shmget(KEY, 100, 0);
-  shmctl(shmid, IPC_RMID, NULL);
-  int semid = semget(KEY, 1, 0);
+  int shmid = shmget(KEY2, sizeof(int), 0);
+  int what = shmctl(shmid, IPC_RMID, NULL);
+ if (what == -1) {
+            printf("shared memory error %d: %s\n", errno, strerror(errno));
+        }  
+int semid = semget(KEY, 1, 0);
   semctl(semid, 0, IPC_RMID);
 
   printf("Removed!\n");
