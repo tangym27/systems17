@@ -8,7 +8,7 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <sys/shm.h>
-#define KEY 314151
+#define KEY 199
 #define SHM_KEY 217
 
 void create(){

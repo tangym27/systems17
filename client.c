@@ -8,7 +8,7 @@
 #include <sys/ipc.h>
 #include <sys/sem.h>
 #include <sys/shm.h>
-#define KEY 314159
+#define KEY 199
 #define KEY2 271
 
 
