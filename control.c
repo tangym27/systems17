@@ -66,9 +66,9 @@ view();
   remove("story.txt");
   int shmid = shmget(KEY2, sizeof(int), 0);
   int what = shmctl(shmid, IPC_RMID, NULL);
- if (what == -1) {
-            printf("shared memory error %d: %s\n", errno, strerror(errno));
-        }  
+// if (what == -1) {
+ //           printf("shared memory error %d: %s\n", errno, strerror(errno));
+  //      }  
 int semid = semget(KEY, 1, 0);
   semctl(semid, 0, IPC_RMID);
 
