@@ -14,7 +14,12 @@
 
 void create(){
   printf("You have chosen to CREATE the story\n");
-  union semun semaphore;
+  union semun {
+    int val;
+    struct semid_ds *buf;
+    unsigned short * array;
+    struct seminfo * __buf;
+  } semaphore;
   int sem_id=semget(KEY,1,IPC_CREAT | IPC_EXCL | 0600);
   if (sem_id>=0) {
     semaphore.val=1;
@@ -26,6 +31,7 @@ void create(){
     }
     //printf("fd is %d\n",fd );
     close(fd);
+    printf("Created!\n");
   }
   else{
     printf("Already created. Try running ./client or ./control -v\n");
